@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version:5.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,18 +6,28 @@ import PackageDescription
 let package = Package(
     name: "SwinjectExtension",
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "SwinjectExtension",
-            targets: ["SwinjectExtension"]),
+            name: "SwinjectExtension-Dynamic",
+            type: .dynamic,
+            targets: ["SwinjectExtension"]
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "SwinjectExtension"),
+            name: "SwinjectExtension",
+            dependencies: [
+                .product(name: "Swinject")
+            ]
+        ),
         .testTarget(
             name: "SwinjectExtensionTests",
-            dependencies: ["SwinjectExtension"]),
+            dependencies: [
+                "SwinjectExtension",
+                .product(name: "Swinject")
+            ]
+        )
     ]
 )
