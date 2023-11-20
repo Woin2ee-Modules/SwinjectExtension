@@ -1,3 +1,4 @@
+@testable import SwinjectDIContainer
 @testable import SwinjectExtension
 import XCTest
 

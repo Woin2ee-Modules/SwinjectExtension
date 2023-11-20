@@ -1,8 +1,14 @@
-import Foundation
+//
+//  SwinjectDIContainer.swift
+//
+//
+//  Created by Jaewon Yun on 2023/11/21.
+//
+
 import Swinject
 
 /// A custom container wrapping `Assembler` and `Container`.
-public final class DIContainer {
+public class DIContainer {
 
     /// A singleton object. Assembler is initialized with baseline container.
     public static let shared: DIContainer = .init(assembler: .init())

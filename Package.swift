@@ -10,6 +10,11 @@ let package = Package(
             name: "SwinjectExtension-Dynamic",
             type: .dynamic,
             targets: ["SwinjectExtension"]
+        ),
+        .library(
+            name: "SwinjectDIContainer-Dynamic",
+            type: .dynamic,
+            targets: ["SwinjectDIContainer"]
         )
     ],
     dependencies: [
@@ -22,10 +27,17 @@ let package = Package(
                 .product(name: "Swinject")
             ]
         ),
+        .target(
+            name: "SwinjectDIContainer",
+            dependencies: [
+                .product(name: "Swinject")
+            ]
+        ),
         .testTarget(
             name: "SwinjectExtensionTests",
             dependencies: [
                 "SwinjectExtension",
+                "SwinjectDIContainer",
                 .product(name: "Swinject")
             ]
         )
