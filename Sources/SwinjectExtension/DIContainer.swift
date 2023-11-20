@@ -18,7 +18,7 @@ public final class DIContainer {
         self.assembler.resolver
     }
 
-    init(assembler: Assembler) {
+    public init(assembler: Assembler) {
         self.assembler = assembler
     }
 
